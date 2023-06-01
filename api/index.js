@@ -6,7 +6,7 @@ const { logErrors, errorHandler, boomErrorHandler, ormErrorHandler } = require('
 const { checkApiKey } = require('./middlewares/auth.handler')
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(express.json());
 
@@ -24,11 +24,11 @@ app.use(cors());
 
 require('./utils/auth')
 
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
   res.send('Hola mi server en express');
 });
 
-app.get('/nueva-ruta',
+app.get('/api/nueva-ruta',
 checkApiKey,
 (req, res) => {
   res.send('Hola, soy una nueva ruta');
