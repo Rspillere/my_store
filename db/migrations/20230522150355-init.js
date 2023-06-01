@@ -1,4 +1,5 @@
 'use strict';
+const { Model, DataTypes, Sequelize } = require('sequelize');
 
 const { USER_TABLE } = require('./../models/user.model');
 const { CUSTOMER_TABLE } = require('./../models/customer.model');
@@ -25,6 +26,11 @@ module.exports = {
       password: {
         allowNull: false,
         type: Sequelize.DataTypes.STRING
+      },
+      recoveryToken: {
+        field: 'recovery_token',
+        allowNull: true,
+        type: DataTypes.STRING
       },
       role: {
         allowNull: false,
